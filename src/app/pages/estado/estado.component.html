@@ -1,0 +1,53 @@
+<div class="col-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="col-md-12">
+                <h3><strong>Cantidad de registros: </strong> <small class="btn btn-danger btn-sm">{{ estado.length }}</small></h3>
+            </div>
+            <hr/>
+
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+
+                    <form class="form-inline" [formGroup]="estadoForm" (ngSubmit)="Guardar(estadoForm.value)">
+                        <div class="form-group col-md-3">
+                            <input type="text" class="form-control" formControlName="estadoID" name="estadoID" placeholder="ID">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <input type="text" class="form-control" formControlName="estado" name="estado" placeholder="Estado">
+                        </div>
+
+                        <button [disabled]="!estado.valid" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Guardar</button>
+                    </form>
+
+                </div>
+            </div>
+
+            <table *ngIf="estado.length > 0" class="table table-sm">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Estado</th>
+                        <th>
+                            <button class="btn btn-primary btn-sm" style="float: right;" type="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let est of estado">
+                        <td class="font-bold"><strong>{{ est.estadoID}}</strong></td>
+                        <td>
+                            <span><i class="fas fa-bookmark"></i> {{ est.estado}}</span>
+                        </td>
+                        <td class="text-right" style="width: 100px;">
+                            <a class="btn btn-sm btn-info" [routerLink]=""><i class="fas fa-edit"></i></a>
+                            <button class="btn btn-sm btn-danger" (click)="Eliminar(est.estadoID)"><i class="far fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>

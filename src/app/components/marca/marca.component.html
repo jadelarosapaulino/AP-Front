@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-3">
+        <div class="card">
+            <div class="card-body">
+
+                <form #marcaForm="ngForm" name="marcaForm" (ngSubmit)="onUpload(marcaForm)">
+                    <div class="form-group" hidden>
+                        <input [(ngModel)]="marca.marcaID" name="marcaID">
+                    </div>
+
+                    <div>
+                        <img *ngIf="marca.img" src="http://localhost:49465/UploadedFiles/{{ marca.img }}" class="img-fluid">
+                        <input [(ngModel)]="marca.img" type="file" accept="image/*" (change)="onFileSelected($event)" name="img" #img hidden>
+                        <button class="btn btn-info btn-block" style="border-radius: 0;" type="button" (click)="img.click()"><i class="far fa-image"></i> Imagen</button>
+                        <hr/>
+                        <div class="form-group">
+                            <input [(ngModel)]="marca.marca_nombre" type="text" class="form-control" name="marca_nombre" placeholder="Nombre de la marca" />
+                        </div>
+                    </div>
+                    <button [disabled]="marca.marca_nombre.length <= 0" class="btn btn-block btn-success" type="submit"><i class="fas fa-save"></i> Guardar</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        <app-modelo></app-modelo>
+    </div>
+</div>
