@@ -9,7 +9,7 @@
                     </div>
 
                     <div>
-                        <img *ngIf="marca.img" src="http://localhost:49465/UploadedFiles/{{ marca.img }}" class="img-fluid">
+                        <img *ngIf="marca.marcaID > 0" src="http://localhost:49465/UploadedFiles/{{ marca.img }}" class="img-fluid">
                         <input [(ngModel)]="marca.img" type="file" accept="image/*" (change)="onFileSelected($event)" name="img" #img hidden>
                         <button class="btn btn-info btn-block" style="border-radius: 0;" type="button" (click)="img.click()"><i class="far fa-image"></i> Imagen</button>
                         <hr/>

@@ -1,0 +1,124 @@
+<div class="row">
+    <div class="col-lg-4 col-xlg-3 col-md-5">
+        <div class="card">
+            <div class="card-body">
+
+                <img class="card-img-top" src="../assets/images/users/5.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <a href="#" class="btn btn-primary btn-block">Seleccionar imagen</a>
+                </div>
+            </div>
+            <div>
+                <hr> </div>
+            <div class="card-body"> <small class="text-muted">Email address </small>
+                <h6>hannagover@gmail.com</h6> <small class="text-muted p-t-30 db">Phone</small>
+                <h6>+91 654 784 547</h6> <small class="text-muted p-t-30 db">Address</small>
+                <h6>71 Pilgrim Avenue Chevy Chase, MD 20815</h6>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-8">
+        <div class="card">
+            <div class="card-body">
+
+                <form class="form-row" [formGroup]="productoForm" (ngSubmit)="Guardar(productoForm.value)">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="productoID">ID</label>
+                            <input type="number" class="form-control" formControlName="productoID" placeholder="ID">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="productoID">Serie</label>
+                            <input type="text" class="form-control" formControlName="serie" placeholder="Serie">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="precio_compra">Precio Compra</label>
+                            <input type="number" class="form-control" formControlName="precio_compra" placeholder="Precio Compra">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="precio_venta">Precio Venta</label>
+                            <input type="number" class="form-control" formControlName="precio_venta" placeholder="Precio Venta">
+                        </div>
+                    </div>
+
+                    <!--Marcas-->
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="marcaID">Marca</label>
+                            <!--<select formControlName="marcaID" class="select2 form-control" name="marcaID">
+                            <option disabled="true" value="0">Seleccione una marca</option>
+                            <option *ngFor="let ma of marcaLista" style="margin-left: 15px;" value="ma.marcaID" 
+                            [selected]="">{{ ma.marca_nombre }}</option>
+                        </select>-->
+
+                            <select formControlName="marcaID" class="form-control" id="marcaID" name="marcaID" (change)="cargarModelos(marcaID)">
+                          <option disabled="true" value="0">Seleccione una marca</option>
+                          <option *ngFor="let ma of marcaLista" [ngValue]="ma.marcaID" value="{{ma.marcaID}}" [selected]="">{{ ma.marca_nombre }}</option>
+                        </select>
+                        </div>
+                    </div>
+
+                    <!--Modelos-->
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="modeloID">Modelo</label>
+                            <select formControlName="modeloID" class="form-control" name="modeloID" (change)="modeloCategoria(modeloID)">
+                            <option disabled="true" value="0">Seleccione un modelo</option>
+                            <option *ngFor="let mo of modeloLista" style="margin-left: 15px;" [value]="mo.modeloID" 
+                            [selected]="">{{ mo.modelo_nombre }}</option>
+                        </select>
+                        </div>
+                    </div>
+
+                    <!--Categorias-->
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="categoria">Categoria</label>
+                            <select formControlName="categoriaID" class="form-control" name="categoriaID">
+                            <option disabled="true" value="0">Seleccione un modelo</option>
+                            <option *ngFor="let ca of categoriaList" style="margin-left: 15px;" [value]="ca.categoriaID" 
+                            [selected]="">{{ ca.categoria_nombre }}</option>
+                        </select>
+                        </div>
+                    </div>
+
+                    <!--Estado-->
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="estado">Estado</label>
+                            <select formControlName="estadoID" class="form-control" name="estadoID">
+                            <option disabled="true" value="0">Seleccione un modelo</option>
+                            <option *ngFor="let e of estadoList" style="margin-left: 15px;" [value]="e.estadoID" 
+                            [selected]="">{{ e.estado }}</option>
+                        </select>
+                        </div>
+                    </div>
+
+                    <!--Disponibilidad activo o no-->
+                    <div class="col-md-12">
+                        <input type="checkbox" formControlName="activo" id="basic_checkbox_2" class="filled-in">
+                        <label for="basic_checkbox_2">Activado</label>
+                    </div>
+
+                    <div class="col-md-12">
+                        <hr>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Guardar</button>
+                        <button type="button" class="btn btn-warning"><i class="fas fa-redo-alt"></i> Limpiar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

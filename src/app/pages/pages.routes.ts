@@ -14,6 +14,7 @@ import { MarcalistComponent } from '../components/marcalist/marcalist.component'
 import { EstadoComponent } from './estado/estado.component';
 import { CategoriaComponent } from './categoria/categoria.component';
 import { ColorComponent } from './color/color.component';
+import { ProductoComponent } from './producto/producto.component';
 
 
 const pagesRoutes: Routes = [
@@ -34,6 +35,7 @@ const pagesRoutes: Routes = [
             { path: 'modelo', component: ModeloComponent, data: { titulo: 'Modelos'}},
             { path: 'categoria', component: CategoriaComponent, data: { titulo: 'Categoria'}},
             { path: 'estado', component: EstadoComponent, data: { titulo: 'Estados'}},
+            { path: 'producto', component: ProductoComponent, data: { titulo: 'Producto'}},
             { path: 'color', component: ColorComponent, data: { titulo: 'Color'}},
             { path: '', redirectTo: '/dashboard', pathMatch: 'full'}
         ]

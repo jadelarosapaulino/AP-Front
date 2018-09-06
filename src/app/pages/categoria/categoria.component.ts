@@ -44,7 +44,7 @@ export class CategoriaComponent implements OnInit {
         this.categoriaService.Get(null)
         .subscribe(res => {
           this.categorias = res;
-        });;
+        })
       }
     })
   }

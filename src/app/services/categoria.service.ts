@@ -17,7 +17,7 @@ export class CategoriaService {
     if(categoriaID == null) {
       urlDatos = urlDatos + null;
     }else{
-      urlDatos = this.url + categoriaID;
+      urlDatos = this.url + "?categoriaID=" + categoriaID;
     }
     return this.http.get<Categoria>(urlDatos)
     .map(res => res);

@@ -18,7 +18,8 @@ export class SidebarService {
         { titulo: 'Estados', url: '/estado'},
         { titulo: 'Categoria', url: '/categoria'},
         { titulo: 'Color', url: '/color'},
-        { titulo: 'RxJs', url: '/rxjs'},
+        { titulo: 'Producto', url: '/producto'},
+        { titulo: 'RxJs', url: '/rxjs'}
       ]
     }
 ];

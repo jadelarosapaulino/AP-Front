@@ -13,6 +13,8 @@ import { ModeloService } from '../../services/modelo.services';
 import { MarcaService } from '../../services/marca.service';
 
 import swal from 'sweetalert2';
+import { Categoria } from '../../model/categoria';
+import { CategoriaService } from '../../services/categoria.service';
 
 @Component({
   selector: 'app-modelo',
@@ -29,17 +31,22 @@ export class ModeloComponent implements OnInit {
     modeloID: 0,
     modelo_nombre: "",
     marcaID: 0,
-    marca_nombre: null
+    marca_nombre: null,
+    categoria_nombre: null,
+    categoriaID: 0
   };
 
   modeloID: number = null;
   marcaID: number = null;
   modelos: Modelo [] = [];
   marcaLista: Marca;
+  categoriaList: Categoria [] = [];
+  paging: number;
 
   constructor(private modeloService: ModeloService, 
               private actRoute: ActivatedRoute,
               private marcaService: MarcaService,
+              private categoriaService: CategoriaService,
               private fb: FormBuilder,
               private state: TransferState) { }
 
@@ -56,11 +63,15 @@ export class ModeloComponent implements OnInit {
     this.modeloForm = this.fb.group({
       modeloID: [null],
       modelo_nombre: ['', Validators.required],
-      marcaID: [0, Validators.required]
+      marcaID: [0, Validators.required],
+      categoria_nombre: ['', Validators.required],
+      categoriaID: [0, Validators.required]
+
     });
 
     this.cargarModelos();
     this.cargarMarcas();
+    this.cargarCategorias();
 
     if (this.marcaID != null ) {
       this.modeloForm.patchValue({marcaID: this.marcaID});
@@ -70,6 +81,7 @@ export class ModeloComponent implements OnInit {
 
   // Lista de modelos con o sin parametros
   cargarModelos() {
+    debugger;
     this.actRoute.params
     .subscribe( parametro => {
         this.marcaID = parametro['marcaID'];
@@ -105,7 +117,9 @@ export class ModeloComponent implements OnInit {
       modeloID: null,
       modelo_nombre: this.modeloForm.value.modelo_nombre,
       marcaID: this.modeloForm.value.marcaID,
-      marca_nombre: ""
+      marca_nombre: "",
+      categoria_nombre: "",
+      categoriaID: this.modeloForm.value.categoriaID
     };
     
     this.modeloService.Post(Save)
@@ -114,6 +128,13 @@ export class ModeloComponent implements OnInit {
       });
   }
   
+  //Cargar lista de categorias
+  cargarCategorias() {
+    this.categoriaService.Get()
+    .subscribe(res => {
+      this.categoriaList = res;
+    });
+  }
   // SetModelo() {
   //   this.modeloService.Post(form.value)
   //     .subscribe(res => res);

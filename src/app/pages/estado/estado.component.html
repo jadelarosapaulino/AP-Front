@@ -18,13 +18,13 @@
                             <input type="text" class="form-control" formControlName="estado" name="estado" placeholder="Estado">
                         </div>
 
-                        <button [disabled]="!estado.valid" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Guardar</button>
+                        <button [disabled]="!estado.values" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Guardar</button>
                     </form>
 
                 </div>
             </div>
 
-            <table *ngIf="estado.length > 0" class="table table-sm">
+            <table class="table table-sm">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">ID</th>

@@ -28,6 +28,7 @@ import { ModeloComponent } from './modelo/modelo.component';
 import { EstadoComponent } from './estado/estado.component';
 import { CategoriaComponent } from './categoria/categoria.component';
 import { ColorComponent } from './color/color.component';
+import { ProductoComponent } from './producto/producto.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { ColorComponent } from './color/color.component';
     ModeloComponent,
     EstadoComponent,
     CategoriaComponent,
-    ColorComponent
+    ColorComponent,
+    ProductoComponent
   ],
   exports: [
     PagesComponent,

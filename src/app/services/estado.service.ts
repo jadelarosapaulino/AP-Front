@@ -18,7 +18,7 @@ export class EstadoService {
     }else{
       urlDatos = this.url + estadoID;
     }
-    return this.http.get<Estado>(urlDatos, {observe: 'events', reportProgress: true});
+    return this.http.get<Estado>(urlDatos);
   }
 
   Post(estado: Estado){

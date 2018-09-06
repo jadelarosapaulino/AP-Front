@@ -22,6 +22,9 @@ import { EstadoService } from './services/estado.service';
 import { AllService } from './services/all.service';
 import { CategoriaService } from './services/categoria.service';
 import { ColorService } from './services/color.service';
+import { ProductoService } from './services/producto.service';
+import { UsuarioService } from './services/usuario.service';
+import { PushNotificationsService } from './services/push.notification.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,10 @@ import { ColorService } from './services/color.service';
     EstadoService,
     CategoriaService,
     ColorService,
-    AllService
+    ProductoService,
+    UsuarioService,
+    AllService,
+    PushNotificationsService
   ],
   bootstrap: [AppComponent]
 })
